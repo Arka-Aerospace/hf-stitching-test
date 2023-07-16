@@ -18,6 +18,9 @@ imageB = cv2.imread(args["second"])
 grayA = cv2.cvtColor(imageA, cv2.COLOR_BGR2GRAY)
 grayB = cv2.cvtColor(imageB, cv2.COLOR_BGR2GRAY)
 
+grayA = cv2.GaussianBlur(grayA, (25,25),5.0,5.0 ,borderType=cv2.BORDER_CONSTANT)
+grayB = cv2.GaussianBlur(grayB, (25,25),5.0,5.0, borderType=cv2.BORDER_CONSTANT)
+
 # compute the Structural Similarity Index (SSIM) between the two
 # images, ensuring that the difference image is returned
 (score, diff) = compare_ssim(grayA, grayB, full=True)
